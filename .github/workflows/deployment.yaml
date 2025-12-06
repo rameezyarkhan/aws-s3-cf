@@ -1,0 +1,31 @@
+name: rameez-testing
+on:
+  push:
+    branches:
+      - main 
+    paths-ignore:
+      - .github
+
+jobs: 
+  upload-to-s3-bucket:
+    name: aws-s3-cf
+    runs-on: ubuntu-latest
+    steps: 
+      - name: checkout code 
+        uses: actions/checkout@v5
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v5.1.1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: eu-north-1
+
+      - name: Sync Local Files With S3 Bucket
+        run: |
+         aws s3 cp ./index.html s3://rameez-s3-bucket-new-1/
+
+
+      
+
+  
