@@ -23,7 +23,7 @@ jobs:
 
       - name: Sync Local Files With S3 Bucket
         run: |
-         aws s3 cp ./index.html s3://rameez-s3-bucket-new-1/
+         aws s3 cp ./index.html s3://rameez-s3-bucket-new-2/
 
 
       
