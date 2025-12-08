@@ -25,13 +25,11 @@ jobs:
         run: |
          aws s3 cp ./index.html s3://rameez-s3-bucket-new-2/
       
-      - name: CloudFront Cache Purge
+      - name: Create CloudFront Invalidation
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id ESA49AQQLQZH6 \ 
-            -- path "/*"
-
-
+            --distribution-id ESA49AQQLQZH6 \
+            --paths "/*"
 
       
 
